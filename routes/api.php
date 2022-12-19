@@ -26,15 +26,15 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
  */
 
 // Hiển thị tài khoản
-Route::get('/nhan-vien','AdminController@show_tk_admin');
+Route::get('/nhan-vien','App\Http\Controllers\AdminController@show_tk_admin');
 //Thêm tài khoản
-Route::post('/add-admin','AdminController@add_admin');
+Route::post('/add-admin','App\Http\Controllers\AdminController@add_admin');
 // Xóa tài khoản
-Route::post('/delete-admin','AdminController@destroy');
-// Khóa tài khoản 
-Route::post('/lock-admin','AdminController@lock');
+Route::post('/delete-admin','App\Http\Controllers\AdminController@destroy');
+// Khóa tài khoản
+Route::post('/lock-admin','App\Http\Controllers\AdminController@lock');
 // Mở khóa
-Route::post('/unlock-admin','AdminController@unlock');
+Route::post('/unlock-admin','App\Http\Controllers\AdminController@unlock');
 
 /**
  * ------------------------------END ADMIN---------------------------------
@@ -48,11 +48,11 @@ Route::post('/unlock-admin','AdminController@unlock');
  */
 
 // Them the loai
-Route::post('/add-category','CategoryController@add_category');
+Route::post('/add-category','App\Http\Controllers\CategoryController@add_category');
 // Show the loai
-Route::get('/show-category','CategoryController@show_category');
+Route::get('/show-category','App\Http\Controllers\CategoryController@show_category');
 // Xoa the loai
-Route::post('/destroy-category','CategoryController@destroy_category');
+Route::post('/destroy-category','App\Http\Controllers\CategoryController@destroy_category');
 
 /**
  * ------------------------------END CATEGORY---------------------------------
@@ -66,16 +66,11 @@ Route::post('/destroy-category','CategoryController@destroy_category');
  */
 
 // Them truyen
-Route::post('/add-story','StoryController@add_story');
+Route::post('/add-story','App\Http\Controllers\StoryController@add_story');
 // Xoa
-Route::post('/destroy-story','StoryController@destroy_story');
+Route::post('/destroy-story','App\Http\Controllers\StoryController@destroy_story');
 // Edit
-Route::post('/edit-story','StoryController@edit_story');
-// Them chapter
-Route::post('/add-chapter','StoryController@add_chapter');
-
-Route::get('/chapter', 'StoryController@view_chapter');
-
+Route::post('/edit-story','App\Http\Controllers\StoryController@edit_story');
  /**
- * ------------------------------START STORY---------------------------------
+ * ------------------------------END STORY---------------------------------
  */
