@@ -25,6 +25,7 @@ class StoryController extends Controller
      */
     public function add_story(Request $request)
     {
+//        dd($request->all());
         if ($request->story_name == '' || $request->content == '') {
             return response(["code" => 400, "message" => "Cần điền đầy đủ!"], 400);
         }

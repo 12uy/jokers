@@ -41,7 +41,7 @@
                             <div class="card pricing-box mt-4" style="padding: 5px;">
                                 <div class="pricing-content" style="box-shadow: 2px 3px 5px 0px rgba(0, 0, 0, 0.3); border-radius: 5px;">
                                     <a href="/truyen-{{$result->id}}/full">
-                                        <div class="text-center"  style="width:100%; height:320px; margin-bottom:20px; background: url('{{$result->image}}') center center / cover; border-radius: 5px 5px 0 0;"></div>
+                                        <div class="text-center"  style="width:100%; height:320px; margin-bottom:20px; background: url('{{url('assets/images/truyen-cuoi-dan-gian-cham-biem-5e56b623b-2-e.jpg')}}') center center / cover; border-radius: 5px 5px 0 0;"></div>
                                     </a>
                                     <div class="pricing-features mt-4" style="padding-left: 10px; height: 50px;">
                                         <a href="/truyen-{{$result->id}}/full" style="font-size: 16px;">{{$result->story_name}}</a>
@@ -66,14 +66,13 @@
         <!-- ============================================================== -->
         <!-- End Right content here -->
         <!-- ============================================================== -->
-        
+
 
     </div>
     <!-- END wrapper -->
 
     <!-- jQuery  -->
     @include('admin.components.js')
-
 </body>
 
 </html>
