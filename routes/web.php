@@ -22,7 +22,7 @@ Route::get('/', function () {
 //});
 
 
-Route::get('/home', 'StoryController@show_home')->middleware('App\Http\Middleware\CheckLoggedAdmin')->name('home');
+Route::get('/home', 'App\Http\Controllers\StoryController@show_home')->middleware('App\Http\Middleware\CheckLoggedAdmin')->name('home');
 
 /**
  * -------------------------------------------------------------------------------
@@ -46,21 +46,17 @@ Route::group(['middleware' => 'App\Http\Middleware\CheckAdmin'], function () {
  */
 Route::group(['middleware' => 'App\Http\Middleware\CheckLoggedAdmin'], function () {
     //Show them the loai
-    Route::get('/them-the-loai', 'CategoryController@category');
+    Route::get('/them-the-loai', 'App\Http\Controllers\CategoryController@category');
     // Them truyen
-    Route::get('/them-truyen', 'StoryController@show_add_story');
+    Route::get('/them-truyen', 'App\Http\Controllers\StoryController@show_add_story');
     // Show
-    Route::get('/truyen', 'StoryController@story')->name('all-story');
+    Route::get('/truyen', 'App\Http\Controllers\StoryController@story')->name('all-story');
     // Tim kiem
-    Route::get('/tim-truyen','StoryController@search');
+    Route::get('/tim-truyen','App\Http\Controllers\StoryController@search');
     // Update
-    Route::get('/truyen/edit/{story_id}', 'StoryController@show_edit_story');
-    // Them chapter
-    Route::get('/truyen-{story_id}/add-chapter', function($story_id) {
-        return view('admin.add_chapter', ['story_id' => $story_id]);
-    });
+    Route::get('/truyen/edit/{story_id}', 'App\Http\Controllers\StoryController@show_edit_story');
     // Xem truyen
-    Route::get('/truyen-{story_id}/full', 'StoryController@show_chapter');
+    Route::get('/truyen-{story_id}/full', 'App\Http\Controllers\StoryController@show_chapter');
     // Doc truyen
     Route::get('/truyen-{story_id}/{id}-chapter-{chapter}.html', function($story_id, $id, $chapter) {
         return view('admin.view_chapter', ['story_id'=> $story_id, 'id' => $id, 'chapter'=> $chapter]);
@@ -78,7 +74,7 @@ Route::get('/login-admin', function(){
 })->middleware('App\Http\Middleware\CheckLoginAdmin')->name('login-admin');
 
 //Dang nhap
-Route::post('/login-admin', 'AdminController@Login');
+Route::post('/login-admin', 'App\Http\Controllers\AdminController@Login');
 
 //Dang xuat
-Route::get('/logout','AdminController@Logout');
+Route::get('/logout','App\Http\Controllers\AdminController@Logout');
