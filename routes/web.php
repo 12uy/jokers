@@ -22,7 +22,7 @@ Route::get('/', function () {
 //});
 
 
-Route::get('/home', 'App\Http\Controllers\StoryController@show_home')->middleware('App\Http\Middleware\CheckLoggedAdmin')->name('home');
+Route::get('/home', 'App\Http\Controllers\StoryController@show_home')->name('home');
 
 /**
  * -------------------------------------------------------------------------------
@@ -57,13 +57,12 @@ Route::group(['middleware' => 'App\Http\Middleware\CheckLoggedAdmin'], function 
     Route::get('/truyen/edit/{story_id}', 'App\Http\Controllers\StoryController@show_edit_story');
     // Xem truyen
     Route::get('/truyen-{story_id}/full', 'App\Http\Controllers\StoryController@show_chapter');
-    // Doc truyen
-    Route::get('/truyen-{story_id}/{id}-chapter-{chapter}.html', function($story_id, $id, $chapter) {
-        return view('admin.view_chapter', ['story_id'=> $story_id, 'id' => $id, 'chapter'=> $chapter]);
-    });
 
 });
-
+// Doc truyen
+Route::get('/truyen-{story_id}/{id}-chapter-{chapter}.html', function($story_id, $id, $chapter) {
+    return view('admin.view_chapter', ['story_id'=> $story_id, 'id' => $id, 'chapter'=> $chapter]);
+});
 /**
  * ------------------------------ END STORY--------------------------------------
  */

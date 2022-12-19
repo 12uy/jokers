@@ -6,7 +6,6 @@ use Illuminate\Http\Request;
 use App\Models\CategoryModel;
 use App\Models\StoryModel;
 use App\Models\Story_Category;
-use App\Models\Chapter_Story;
 use Spatie\Searchable\Search;
 use Spatie\Searchable\ModelSearchAspect;
 use Spatie\Searchable\Searchable;
@@ -26,7 +25,7 @@ class StoryController extends Controller
      */
     public function add_story(Request $request)
     {
-        if ($request->story_name == '' || $request->description == '') {
+        if ($request->story_name == '' || $request->content == '') {
             return response(["code" => 400, "message" => "Cần điền đầy đủ!"], 400);
         }
         $story = new StoryModel;
@@ -35,7 +34,7 @@ class StoryController extends Controller
             return response(["code" => 400, "message" => "Truyện đã tồn tại!"], 400);
         }
         $story->story_name = $request->story_name;
-        $story->description = $request->description;
+        $story->content = $request->content;
         $story->status = $request->status;
         $story->save();
 

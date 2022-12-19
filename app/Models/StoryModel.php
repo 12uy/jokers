@@ -14,7 +14,7 @@ class StoryModel extends Model implements Searchable
     public $fillable = [
         'id',
         'story_name',
-        'description',
+        'content',
         'status'
     ];
 

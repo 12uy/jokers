@@ -16,7 +16,7 @@ class CreateStoryTable extends Migration
         Schema::create('story', function (Blueprint $table) {
             $table->id();
             $table->string('story_name');
-            $table->text('description');
+            $table->text('content');
             $table->string('status');
             $table->dateTime('created')->default(date('Y-m-d H:i:s'));
         });
