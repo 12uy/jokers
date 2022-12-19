@@ -59,13 +59,6 @@
                                         </div>
                                         <div class="col-lg-6" style="float: right;">
                                             <div class="form-group">
-                                                <label for="status">Status</label>
-                                                <select id="status" class="form-control">
-                                                    <option value="1" selected="">Đang phát triển</option>
-                                                    <option value="0">Đã xong</option>
-                                                </select>
-                                            </div>
-                                            <div class="form-group">
                                                 <label>Thể loại</label>
                                                 <div>
                                                 <?php $i = 0; ?>
@@ -103,9 +96,6 @@
     <!-- jQuery  -->
     @include('admin.components.js')
 
-    <script src="{{asset('/vendor/laravel-filemanager/js/stand-alone-button.js')}}"></script>
-    <script>$('#lfm').filemanager('image');</script>
-
     <script>
         //Them ten truyen
         $(document).ready(function () {
@@ -121,7 +111,6 @@
                 }
                 var story_name = $("#story_name");
                 var content = $("#content");
-                var status = $("#status").find('option:selected').val();
                 $.ajax({
                     url: '{{URL::to("api/add-story")}}',
                     type: 'POST',
@@ -130,7 +119,6 @@
                         data: data,
                         story_name: story_name.val(),
                         content: content.val(),
-                        status: status,
                     }
                 })
                     .done(function (data) {

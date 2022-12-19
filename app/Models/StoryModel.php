@@ -14,21 +14,20 @@ class StoryModel extends Model
     public $fillable = [
         'id',
         'story_name',
-        'content',
-        'status'
+        'content'
     ];
 
-//    public function getSearchResult(): SearchResult
-//    {
-//
-//        $url = route('all-story', $this->id);
-//
-//        return new SearchResult(
-//            $this,
-//            $this->story_name,
-//            $url
-//        );
-//    }
+    public function getSearchResult(): SearchResult
+    {
+
+        $url = route('all-story', $this->id);
+
+        return new SearchResult(
+            $this,
+            $this->story_name,
+            $url
+        );
+    }
     public function Category()
     {
         return $this->belongsToMany('App\Models\CategoryModel','story_category' ,'story_id', 'category_id');

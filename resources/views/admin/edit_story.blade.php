@@ -59,26 +59,6 @@
                                             </div>
                                         </div>
                                         <div class="col-lg-6" style="float: right;">
-                                            <div class="form-group">
-                                                <label>Ảnh truyện</label>
-                                                <div class="input-group">
-                                                <span class="input-group-btn" style="color: #ffffff; ">
-                                                    <a id="lfm" data-input="image" data-preview="holder" class="btn btn-primary">
-                                                    <i class="fa fa-picture-o"></i> Choose
-                                                    </a>
-                                                </span>
-                                                <input id="image" class="form-control" type="text" name="filepath" value="{{$story->image}}">
-                                                </div>
-                                                <div id="holder" style="margin-top:15px;max-height:100px;">
-                                                    <img src="{{$story->image}}" style="height: 5rem;">
-                                                </div>
-                                            </div>
-                                            <div class="form-group">
-                                                <label for="status">Status</label>
-                                                <select id="status" class="form-control">
-                                                    <option value="1" selected="">Đang phát triển</option>
-                                                    <option value="0">Đã xong</option>
-                                                </select>
                                             </div>
                                             <div class="form-group">
                                                 <label>Thể loại</label>
@@ -126,8 +106,6 @@
 
     <!-- jQuery  -->
     @include('admin.components.js')
-    <script src="{{asset('/vendor/laravel-filemanager/js/stand-alone-button.js')}}"></script>
-    <script>$('#lfm').filemanager('image');</script>
     <script>
         //Sua truyen
         $(document).ready(function () {
@@ -142,8 +120,6 @@
                 var id = "{{$story->id}}";
                 var story_name = $("#story_name");
                 var content = $("#content");
-                var image = $("#image");
-                var status = $("#status").find('option:selected').val();
                 $.ajax({
                     url: '{{URL::to("api/edit-story")}}',
                     type: 'POST',
@@ -152,9 +128,7 @@
                         id: id,
                         data: data,
                         story_name: story_name.val(),
-                        content: content.val(),
-                        image: image.val(),
-                        status: status,
+                        content: content.val()
                     }
                 })
                     .done(function (data) {

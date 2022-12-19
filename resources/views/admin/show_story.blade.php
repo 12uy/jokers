@@ -48,7 +48,6 @@
                                             <th>Tên truyện</th>
                                             <th>Nội dung</th>
                                             <th>Ảnh</th>
-                                            <th>Thêm chương</th>
                                             <th>Xem</th>
                                             <th>Sửa</th>
                                             <th>Xóa</th>
@@ -74,18 +73,15 @@
                                                 <td style="width: 200px;"> {{$result->story_name}} </td>
                                                 <td style="width: 450px;"> {{$content}} </td>
                                                 <td style="width: 120px;">
-                                                    <div class="box-image" style="background: url('{{$result->image}}') center center / cover; width: 90px; height:120px;"></div>
+                                                    <div class="box-image" style="background: url('{{url('assets/images/truyen-cuoi-dan-gian-cham-biem-5e56b623b-2-e.jpg')}}') center center / cover; width: 90px; height:120px;"></div>
                                                 </td>
-                                                <td style="width: 146px;">
-                                                    <a href="/truyen-{{$result->id}}/add-chapter" class="btn btn-success" style="background: #4b2399;border: 1px solid #4b2399;">Thêm chương</a>
-                                                </td>
-                                                <td style="width: 66px;">
+                                                <td style="width: 94px;">
                                                     <a href="/truyen-{{$result->id}}/full" class="btn btn-success" style="background: #028fc5; border: 1px solid #028fc5;">Xem</a>
                                                 </td>
-                                                <td style="width: 66px;">
+                                                <td style="width: 94px;">
                                                     <a href="truyen/edit/{{$result->id}}" class="btn btn-success">Sửa</a>
                                                 </td>
-                                                <td style="width: 66px;">
+                                                <td style="width: 96px;">
                                                     <span class="btn btn-danger" onclick="destroy('{{$result->id}}')">Xóa</span>
                                                 </td>
                                             </tr>

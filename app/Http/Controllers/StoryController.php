@@ -36,7 +36,6 @@ class StoryController extends Controller
         }
         $story->story_name = $request->story_name;
         $story->content = $request->content;
-        $story->status = $request->status;
         $story->save();
 
         if ($request->data != null) {
@@ -111,15 +110,14 @@ class StoryController extends Controller
      */
     public function edit_story(Request $request)
     {
-        if ($request->story_name == '' || $request->description == '') {
+        if ($request->story_name == '' || $request->content == '') {
             return response(["code" => 400, "message" => "Cần điền đầy đủ!"], 400);
         }
         $story = new StoryModel;
 
         $story->where('id', $request->id)->update([
             'story_name' => $request->story_name,
-            'description' => $request->description,
-            'status' => $request->status
+            'content' => $request->content
         ]);
 
         $story_category = StoryModel::find($request->id);
@@ -151,43 +149,13 @@ class StoryController extends Controller
     }
 
     /**
-     * Them chapter
-     */
-    public function add_chapter(Request $request)
-    {
-        if ($request->chapter == '' || $request->code == '') {
-            return response(["code" => 400, "message" => "Cần điền đầy đủ!"], 400);
-        }
-        $Chapter_Story = new Chapter_Story;
-        $Chapter_Story->story_id = $request->story_id;
-        $Chapter_Story->chapter = $request->chapter;
-        $Chapter_Story->title = $request->title;
-        $Chapter_Story->detail_story = $request->code;
-        $Chapter_Story->save();
-        return response(["code" => 200, "message" => "Them thanh cong!"], 200);
-    }
-
-    /**
-     * Hien thi truyen full
-     */
-    public function show_chapter($story_id)
-    {
-        $story = new StoryModel;
-        $story_category = new Story_Category;
-        $Chapter_Story = new Chapter_Story;
-        $data = $Chapter_Story->where('story_id', $story_id)->get();
-        $data2 = $story->where('id', $story_id)->first();
-        $data3 = $story_category->where('story_id', $story_id)->get();
-        return view('admin.show_chapter', ['data'=>$data, 'data2'=>$data2, 'data3'=>$data3]);
-    }
-    /**
      * Doc truyen
      */
-    public function view_chapter(Request $request)
+    public function get_story(Request $request)
     {
-        $Chapter_Story = new Chapter_Story;
-        $data = $Chapter_Story->where('id', $request->id)->first();
-        return $data;
+        $story = new StoryModel();
+        $data = $story->where('id', $request->story_id)->first();
+        return view('admin.view_story',['data'=>$data]);
     }
     /**
      * Doc truyen

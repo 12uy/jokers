@@ -60,9 +60,7 @@ Route::group(['middleware' => 'App\Http\Middleware\CheckLoggedAdmin'], function 
 
 });
 // Doc truyen
-Route::get('/truyen-{story_id}/{id}-chapter-{chapter}.html', function($story_id, $id, $chapter) {
-    return view('admin.view_chapter', ['story_id'=> $story_id, 'id' => $id, 'chapter'=> $chapter]);
-});
+Route::get('/truyen-{story_id}.html', 'App\Http\Controllers\StoryController@get_story');
 /**
  * ------------------------------ END STORY--------------------------------------
  */
