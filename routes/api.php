@@ -74,3 +74,17 @@ Route::post('/edit-story','App\Http\Controllers\StoryController@edit_story');
  /**
  * ------------------------------END STORY---------------------------------
  */
+
+
+ /**
+  * -----------------------------USER---------------------------------------
+  */
+Route::group(
+    [
+        'prefix' => 'user',
+        'namespace'=>'App\Http\Controllers\UserController'
+    ],function($router){
+    Route::get('list','App\Http\Controllers\UserController\StoriesController@index');
+});
+Route::get('stories/{category_id}','App\Http\Controllers\UserController\StoriesController@getWithCategory');
+Route::get('category','App\Http\Controllers\UserController\CategoriesController@getAllCategories');
