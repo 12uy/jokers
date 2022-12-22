@@ -88,3 +88,4 @@ Route::group(
 });
 Route::get('stories/{category_id}','App\Http\Controllers\UserController\StoriesController@getWithCategory');
 Route::get('category','App\Http\Controllers\UserController\CategoriesController@getAllCategories');
+Route::get('/search-story/{key}','App\Http\Controllers\UserController\StoriesController@search_story');

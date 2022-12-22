@@ -20,4 +20,8 @@ class StoriesController
         $list = $this->story->join('story_category', 'story.id', '=', 'story_category.story_id')->where('story_category.category_id',$categoryId);
         return response()->json($list->paginate(10));
     }
+    public function search_story(Request $request){
+        $search = $this->story->where('story_name','like','%'.$request->key.'%')->get();
+        return response()->json($search);
+    }
 }
